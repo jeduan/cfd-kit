@@ -10,6 +10,7 @@ import org.bouncycastle.util.encoders.Base64;
 
 import com.jeduan.cfd.util.DigestUtils;
 
+//TODO Agregar enum de estado y que lance excepciones si no es aceptado
 public class CertificateData {
 	public final String noCertificado;
 	public final String certificado;

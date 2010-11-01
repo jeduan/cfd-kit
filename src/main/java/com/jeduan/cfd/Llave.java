@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
 
+import com.jeduan.cfd.util.KeyUtils;
 import com.jeduan.cfd.util.StatusLlave;
 
 public class Llave {
@@ -47,25 +48,18 @@ public class Llave {
 		public Builder(InputStream key, String keyPass, InputStream cer)
 				throws IOException {
 
+			this.statusLlave = KeyUtils.validate(key, cer, keyPass);
+
+			this.keyPass = keyPass;
+			
 			byte[] cerArray = IOUtils.toByteArray(cer);
-			byte[] keyArray = IOUtils.toByteArray(key);
-
-			StatusLlave statusLlave = LlaveService.INSTANCE.validate(keyArray,
-					cerArray, keyPass);
-			if (StatusLlave.SUCCESS != statusLlave) {
-				throw new IllegalArgumentException("La llave fue rechazada, motivo: "
-								+ statusLlave.toString());
-			}
-
 			CertificateData data = LlaveService.INSTANCE.getCertificateData(cerArray);
 
-			this.statusLlave = statusLlave;
 			this.cerNumber = data.noCertificado;
 			this.cerIssuer = data.issuer;
 			this.cerSubject = data.subject;
 			this.cerValidFrom = data.from;
 			this.cerValidTo = data.to;
-			this.keyPass = keyPass;
 		}
 		
 		public Llave build() {
