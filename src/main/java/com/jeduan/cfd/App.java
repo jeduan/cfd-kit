@@ -7,10 +7,8 @@ import java.io.InputStream;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
-import com.jeduan.cfd.cli.Comando;
-import com.jeduan.cfd.cli.OptionsParser;
-import com.jeduan.cfd.util.KeyUtils;
-import com.jeduan.cfd.util.StatusLlave;
+import com.jeduan.cfd.cli.*;
+import com.jeduan.cfd.util.*;
 
 public class App 
 {
@@ -39,7 +37,8 @@ public class App
 	        	}
 	        }
         } catch (ParameterException e) {
-        	System.out.println(e.getLocalizedMessage());
+        	JCommander rescue = new JCommander(opts);
+        	rescue.usage();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
