@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * Tipo definido para expresar información aduanera
+ * Tipo definido para expresar informaci√≥n aduanera
  * 
  * <p>Java class for t_InformacionAduanera complex type.
  * 
