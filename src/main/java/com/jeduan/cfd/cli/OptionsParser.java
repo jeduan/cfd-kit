@@ -22,4 +22,7 @@ public class OptionsParser {
     @Parameter(names = {"-i", "--cadena"}, description = "Cadena Original")
     public File cadenaOriginal;
     
+    @Parameter(names = "--version")
+    public String version = "2.0";
+    
 }
